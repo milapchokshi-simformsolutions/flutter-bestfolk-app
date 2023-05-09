@@ -37,8 +37,7 @@ class MainListScreen extends StatelessWidget {
                   child: MedicineHeaderScreen(
                     getMedicineListData[index],
                   ),
-                  onTap: () => Scaffold.of(context)
-                      .showSnackBar(SnackBar(content: Text(index.toString()))),
+                  onTap: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(index.toString()))),
                 );
               },
               itemCount: getMedicineListData.length,

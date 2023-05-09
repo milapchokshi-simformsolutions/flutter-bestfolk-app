@@ -5,7 +5,7 @@ class AppbarAction extends StatelessWidget {
   final String? lable;
   final VoidCallback? onPress;
 
-  const AppbarAction({required this.icon, this.lable, this.onPress});
+  const AppbarAction({Key? key, required this.icon, this.lable, this.onPress}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class AppbarAction extends StatelessWidget {
       child: Row(
         children: [
           icon,
-          Text(lable ?? "", style: TextStyle(color: Colors.black)),
+          Text(lable ?? "", style: const TextStyle(color: Colors.black)),
         ],
       ),
       onPressed: onPress,

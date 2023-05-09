@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:helloworld/ui/theme/config.dart';
 import 'package:helloworld/ui/theme/custom_theme.dart';
 import 'package:helloworld/ui/views/dashboard/article_detail_screen.dart';
 import 'package:helloworld/ui/views/dashboard/home.dart';
-import 'package:helloworld/ui/views/dashboard/thirdtab/decrement_screen.dart';
 import 'package:helloworld/ui/views/data/main_screen_dummy_data.dart';
 
 void main() {
@@ -12,7 +11,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp();
+  const MyApp({Key? key}) : super(key: key);
 
   //1
   @override
@@ -23,7 +22,7 @@ class _MyAppState extends State with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     currentTheme.addListener(() {
       setState(() {});
     });
@@ -31,19 +30,22 @@ class _MyAppState extends State with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    print('AppLifecycleState: $state');
+    if (kDebugMode) {
+      print('AppLifecycleState: $state');
+    }
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
   @override
   void deactivate() {
-    // TODO: implement deactivate
-    print("deactivate");
+    if (kDebugMode) {
+      print("deactivate");
+    }
     super.deactivate();
   }
 
@@ -72,4 +74,3 @@ class _MyAppState extends State with WidgetsBindingObserver {
     );
   }
 }
-

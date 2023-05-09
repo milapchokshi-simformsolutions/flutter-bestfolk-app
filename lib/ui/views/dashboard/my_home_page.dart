@@ -17,15 +17,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return [
       const BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: Text('Red')
+           label: 'Red'
       ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.search),
-        title: Text('Blue'),
+        label: 'Blue',
       ),
       const BottomNavigationBarItem(
           icon: Icon(Icons.info_outline),
-          title: Text('Yellow')
+          label: 'Yellow'
       )
     ];
   }
