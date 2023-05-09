@@ -21,16 +21,22 @@ jobs:
       matrix:
         sdk: [dev, stable, 2.19.0]
     steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
-      - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
-        with:
-          sdk: ${{ matrix.sdk }}
-      - id: install
-        name: Install dependencies
-        run: flutter pub get
-      - name: Check formatting
-        run: dart format --output=none --set-exit-if-changed .
-        if: matrix.sdk == 'dev' && steps.install.outcome == 'success'
-      - name: Analyze code
-        run: dart analyze --fatal-infos
-        if: always() && steps.install.outcome == 'success'
+    - uses: actions/checkout@v3
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.7'
+        channel: 'stable'
+    - run: flutter --version
+    - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+    - uses: dart-lang/setup-dart@d6a63dab3335f427404425de0fbfed4686d93c4f
+      with:
+        sdk: ${{ matrix.sdk }}
+    - id: install
+      name: Install dependencies
+      run: flutter pub get
+    - name: Check formatting
+      run: dart format --output=none --set-exit-if-changed .
+      if: matrix.sdk == 'dev' && steps.install.outcome == 'success'
+    - name: Analyze code
+      run: dart analyze --fatal-infos
+      if: always() && steps.install.outcome == 'success'
