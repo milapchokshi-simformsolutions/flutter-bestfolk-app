@@ -44,7 +44,7 @@ class _MyAppState extends State with WidgetsBindingObserver {
   @override
   void deactivate() {
     if (kDebugMode) {
-      print("deactivate");
+      print("deactivate mode");
     }
     super.deactivate();
   }
